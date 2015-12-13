@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+</head>
+<body>
+	<div id="main" class="aaa">
+		
+	</div>
+	<script type="text/javascript">
+	$.fn.extend({
+		//扩展一个DOM操作方法，用于获取元素的class名称
+		//$.fn.extend扩展插件中的this指向的是该DOM元素对应的jQuery对象
+		getClassName:function(){
+			return this.attr('class');
+		}
+	});
+	//$.fn.extend插件扩展机制与$.extend的不同，导致了调用方法也不同
+	alert($('#main').getClassName());//aaa
+	</script>
+</body>
+</html>

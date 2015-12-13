@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+
+	<script>
+		//Chrome for mac 47
+		//不知道为嘛每次刷新输出的结果都是不一样的
+		//如果这次是jQuery对象
+		//那么下次就是DOM元素
+		console.log($('li').get(0));
+		console.log($('li')[0]);
+	</script>
+</body>
+</html>

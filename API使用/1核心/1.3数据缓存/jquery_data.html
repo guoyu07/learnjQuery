@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+
+	<script>
+		//传一个参数表示绑定数据到“根目录”
+		$('ul').data({
+			name:'zqq',
+			age:'23'
+		});
+		//传两个参数表示绑定数据到“src子目录”
+		$('ul').data('src',{
+			name:'yfx',
+			age:'24'
+		});
+		//获取所有绑定数据
+		console.log($('ul').data());
+		//获取src下面的绑定数据
+		console.log($('ul').data('src'));
+	</script>
+</body>
+</html>

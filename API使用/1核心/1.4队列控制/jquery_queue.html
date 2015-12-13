@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style>
+		div { 
+			margin:3px; 
+			width:40px; 
+			height:40px;
+			position:absolute; 
+			left:0px; 
+			top:30px; 
+			background:green; 
+			display:none; 
+		}
+		div.newcolor { background:blue; }
+		span { 
+			color:red; 
+		}
+	</style>
+</head>
+<body>
+	<button id="show">Show Length of Queue</button>
+	<button id="start">开始动画</button>
+	<button id="stop">暂停动画</button>
+	<span></span>
+	<div></div>
+	<script>
+		/**
+		*(1)runIt会不断被调用，由runIt函数我们可以看出，队列长度(待执行的函数个数)最小为1，最大为8
+		*(2)runIt函数里面的操作默认都会添加到fx队列数组中
+		*(3)$('div').queue('fx').length获取队列的长度
+		*(4)$('div').queue(function(){})将函数添加到默认的fx队列中
+		*(5)$('div').queue('zqq',function(){})将函数添加到zqq队列中
+		*(6)$('div').queue('fx',[])清空fx队列数组
+		*(7)$('div').dequeue();取出fx队列中数组中的第一个函数
+		*/
+
+		function runIt() {
+			$("div").show("slow");
+			$("div").animate({left:'+=200'},2000);
+			$("div").slideToggle(2000);
+			$("div").slideToggle(2000);
+			$("div").animate({left:'-=200'},2000);
+			$("div").hide("slow");
+		}
+
+		function runItOther(){
+			$('div').show(2000);
+			$('div').animate({
+				height:'+=500'
+			},2000);
+			$('div').animate({
+				'height':'-=500'
+			},2000);
+			$('div').hide(2000);
+		}
+	
+		$("#show").click(function(){
+			//length获取的是所有队列长度的总和
+			$('span').text($('div').queue().length);
+			//无法单独获取某一队列的长度，以下写法无效
+			// $('span').text($('div').queue('fx').length);
+		});	
+	
+		$('#start').click(function(){
+
+			runIt();
+			runItOther();
+
+			/*
+			*等同于以下代码
+			*runIt函数默认会添加到fx队列中
+			*dequeue方法默认会调用shift函数取出队列数组中的第一个函数并执行
+			*一句话，queue函数负责添加，dequeue函数负责执行
+			*/
+			
+			/*
+			$('div').queue(runIt);
+			$('div').dequeue();
+			$('div').queue('zqq',runItOther);
+			$('div').dequeue('zqq');
+			*/			
+
+			
+		});
+
+
+		$('#stop').click(function(){
+			/**
+			*stop()方法会结束当前动画，并立即执行下一个动画，下一次开始的时候是“续播”
+			*stop(true)方法会结束当前及未执行的动画，下一次开始的时候是“重播”
+			*/
+			
+			$('div').stop(true);
+
+			/*
+			*等同于以下代码
+			$('div').clearQueue();
+			$('div').stop();
+			*/
+
+			/**
+			*也等同于以下代码,其实清空一个队列,就意味着清空了所有的队列,第二行代码可以省略
+			$('div').queue('fx',[]);
+			$('div').queue('zqq',[]);
+			$('div').stop();
+			*/
+			
+		})
+
+
+		
+	</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+</head>
+<body>
+	<div id="main" class="aaa">
+		
+	</div>
+	
+	<script type="text/javascript">
+		//假如jQuery库中的$被污染，例如
+		var $={
+			name:'zqq'
+		};
+		alert('污染: '+$.name);
+		//alert($('#main').attr('class'));报错
+
+		//方法一：接下来我们还可以通过以下方法使用jQuery库来获取class
+		alert('方法一: '+jQuery('#main').attr('class'));
+
+		//方法二：也还可以继续使用$
+		(function($){
+			alert('方法二: '+$('#main').attr('class'));
+		}(jQuery))
+
+		//方法三：如果我们不想使用$符号，想自定义一个符号也可以使用如下方式
+		var zqq=jQuery.noConflict();
+		alert('方法三: '+zqq('#main').attr('class'));
+		//noConflict()方法如果传入参数true，不仅会转让$控制权，也会转让jQuery控制权
+		var yfx=jQuery.noConflict(true);
+		alert('方法三含参: '+yfx('#main').attr('class'));
+		//报错：alert('方法三含参: '+jQuery('#main').attr('class'));
+
+
+	</script>
+</body>
+</html>
