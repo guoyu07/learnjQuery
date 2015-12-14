@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+</head>
+<body>
+	<button id="setCSS">设置CSS</button>
+	<button id="getCSS">获取CSS</button>
+	<div id="main"></div>
+	<script type="text/javascript">
+		$('#setCSS').click(function(){
+			$('#main').css({
+				width: '300px',
+      			height: '300px',
+      			backgroundColor: 'green'
+      		});
+		});
+		$('#getCSS').click(function(){
+			alert($('#main').css('width'));
+		});
+	</script>
+</body>
+</html>

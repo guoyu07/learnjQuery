@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+            body{
+                  border: 5px solid orange;
+                  padding: 5px;
+                  position: absolute;
+            }
+            #div1{
+                  width: 200px;
+                  height: 200px;
+                  padding: 10px;
+                  border:10px solid black;
+                  margin-top: 10px;
+                  margin-bottom: 8px;
+                  background-color: red;
+            }
+	</style>
+</head>
+<body>
+      <div id="div1">div1</div>
+      <button id="getWidthAndHeight">获取div1的outerHeight与outerWidth</button>
+      <ol>
+          <li>outerHeight与outerWidth的值等于width与height各加上padding,再加上border的值</li>
+      </ol>
+	<script type="text/javascript">
+	      $('#getWidthAndHeight').click(function(){
+                  alert('div1的outerWidth为'+$('#div1').outerWidth()+',outerHeight为'+$('#div1').outerHeight());
+            });
+	</script>
+</body>
+</html>

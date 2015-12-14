@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+            body{
+                  border: 5px solid orange;
+                  padding: 5px;
+                  position: absolute;
+            }
+            #div1{
+                  width: 200px;
+                  height: 200px;
+                  padding: 10px;
+                  border:10px solid black;
+                  margin-top: 10px;
+                  margin-bottom: 8px;
+                  background-color: red;
+            }
+            #div2{
+                  width: 200px;
+                  height: 200px;
+                  margin-top: 10px;
+                  background-color: green;
+            }
+	</style>
+</head>
+<body>
+      <div id="div1">div1</div>
+	<div id="div2">div2</div>
+      <button id="getOffset1">获取div1的offset</button>
+      <button id="getOffset2">获取div2的offset</button>
+      <button id="getPos1">获取div1的position</button>
+      <button id="getPos2">获取div2的position</button>
+      <ol>
+            <li>
+            div1与div2垂直相邻，div1的margin-bottom=10px,div2的margin-top=8px
+            则div1与div2的上下距离为10px，而不是18px；水平方向上同理(<span style="color:red">margin与margin取最大</span>)   
+            </li>
+            <li>
+            body包含div1，body的padding-top=8px,div1的margin-top=10px
+            则div1距离body的距离为18px;(<span style="color:red">padding与margin取二者之和</span>) 
+            </li>
+            <li>
+            设置padding不会影响内容的width与height,但<span style="color:red">会影响实际的页面占地大笑</span>
+            </li>
+             <li>
+            offset()方法是绝对定位，position()方法是相对定位，如果所有父类都是默认定位(非relative,absolute)，则position()方法等同于offset()方法
+            </li>
+             <li>
+            position()方法在计算距离的时候会<span style="color:red">减去margin</span>
+            </li>
+      </ol>
+	<script type="text/javascript">
+	      $('#getOffset1').click(function(){
+                  alert('div1的top为'+$('#div1').offset().top+',left为'+$('#div1').offset().left);
+            });
+             $('#getOffset2').click(function(){
+                  alert('div2的top为'+$('#div2').offset().top+',left为'+$('#div2').offset().left);
+            });
+            $('#getPos1').click(function(){
+                  alert('div1的top为'+$('#div1').position().top+',left为'+$('#div1').position().left);
+            });
+            $('#getPos2').click(function(){
+                  alert('div2的top为'+$('#div2').position().top+',left为'+$('#div2').position().left);
+            });
+	</script>
+</body>
+</html>

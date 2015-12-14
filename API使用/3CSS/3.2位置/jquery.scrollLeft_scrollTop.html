@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+            body{
+                  margin: 0;
+                  border: 5px solid orange;
+                  padding-top: 800px;
+            }
+            #div1{
+                  width: 200px;
+                  height: 800px;
+                  background-color: red;
+            }
+	</style>
+</head>
+<body>
+      <div id="div1">div1</div>
+      <ul>
+            <li>默认情况下只有body元素，且只有body元素超过了窗口大小时，scrollLeft与scrollTop才有大于0的值</li>
+            <li>只有父元素固定了宽度与高度，设置overflow＝hidden,而子元素的大小超过了父元素，子元素才会有scrollLeft与scrollTop值，否则为0</li>
+            <li>scrollTop与scrollLeft的大小等于被滚动条滚进去的大小</li>
+      </ul>
+	<script type="text/javascript">
+            $('body').click(function(){
+                  alert('滚动条左部偏移'+$('body').scrollLeft()+'px,顶部偏移'+$('body').scrollTop());
+            });
+	</script>
+</body>
+</html>
