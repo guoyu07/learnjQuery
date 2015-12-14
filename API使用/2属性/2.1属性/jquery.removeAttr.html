@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+      	.blue{
+      		width: 300px;
+      		height: 300px;
+      		background-color: blue;
+      	}
+	</style>
+</head>
+<body>
+	<button id="remove">移除当前class属性</button>
+	<div id="main" data-color="black" class="blue"></div>
+	<script type="text/javascript">
+		$('#remove').click(function(){
+			$('#main').removeProp('class');
+		});
+	</script>
+</body>
+</html>

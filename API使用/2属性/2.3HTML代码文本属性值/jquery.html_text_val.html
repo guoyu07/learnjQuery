@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+</head>
+<body>
+	<button id="getHtml">获取Html</button>
+	<button id="getText">获取Text</button>
+	<button id="getValue">获取Value</button>
+	<div id="main">
+		<p>主体内容</p>
+	</div>
+	<form action="">
+		<input id="username" type="text">
+	</form>
+	<script type="text/javascript">
+		$('#getHtml').click(function(){
+			alert($('#main').html());
+		});
+		$('#getText').click(function(){
+			alert($('#main').text());
+		});
+		$('#getValue').click(function(){
+			alert($('#username').val());
+		});
+	</script>
+</body>
+</html>

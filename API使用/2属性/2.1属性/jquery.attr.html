@@ -1,1 +1,56 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+      	.blue{
+      		width: 300px;
+      		height: 300px;
+      		background-color: blue;
+      	}
+      	.green{
+      		width: 300px;
+      		height: 300px;
+      		background-color: green;
+      	}
+      	.red{
+      		width: 300px;
+      		height: 300px;
+      		background-color: red;
+      	}
+      	.black{
+      		width: 300px;
+      		height: 300px;
+      		background-color: black;
+      	}
+	</style>
+</head>
+<body>
+	<button id="getAttr">获取当前class属性</button>
+	<button id="setMultiAttr">设置大小与颜色属性</button>
+	<button id="setAttr">设置颜色属性</button>
+	<button id="setAttrByFunc">回调函数</button>
+	<div id="main" data-color="black" class="blue"></div>
+	<script type="text/javascript">
+		//attr('获取属性名称'｜'批量设置属性'｜'设置单个属性'｜'回调函数');
+		$('#getAttr').click(function(){
+			alert($('#main').attr('class'));
+		});
+		$('#setMultiAttr').click(function(){
+			$('#main').attr({
+				class:'green'
+			});
+		});
+		$('#setAttr').click(function(){
+			$('#main').attr('class','red');
+		});
+		$('#setAttrByFunc').click(function(){
+			$('#main').attr('class',function(){
+				return $(this).data('color');
+			});
+		});
+	</script>
+</body>
+</html>
