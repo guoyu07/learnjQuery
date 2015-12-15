@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		#main{
+			border: 1px solid orange;
+			display: inline-block;
+			width: 300px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="main"></div>
+	<script type="text/javascript">
+		$('#main').append('<p>(1)哈哈哈</p>');
+		$('<p>(2)大傻B</p>').appendTo($('#main'));
+		$('#main').prepend('<p>(3)呵呵呵</p>');
+		$('<p>(4)嘿嘿嘿</p>').prependTo($('#main'));
+	</script>
+</body>
+</html>

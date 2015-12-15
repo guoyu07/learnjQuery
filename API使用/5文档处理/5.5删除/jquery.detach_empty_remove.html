@@ -5,7 +5,7 @@
 	<title>Document</title>
 	<script src="../../../src/jquery-2.0.3.js"></script>
 	<style type="text/css">
-		.main{
+		#main{
 			border: 1px solid orange;
 			width: 200px;
 			height: 300px;
@@ -14,28 +14,26 @@
 			display: block;
 			border: 1px solid black;
 		}
-		#tmp{
-			background-color: orange;
-		}
 	</style>
 </head>
 <body>
-	<div class="main">
+	<div id="main">
 		<p>1</p>
 		<p>2</p>
 		<p>3</p>
-	</div>
-	<div id="tmp">
-		
 	</div>
 	<script type="text/javascript">
 		$('p').click(function(){
 			alert($(this).text());
 		})
-		//(1)仅仅克隆节点
-		//$('.main').clone().prependTo($('#tmp'));
-		//(2)克隆节点的同时，克隆事件处理程序
-		$('.main').clone().prependTo($('#tmp'));
+		//(1)empty是直接清空
+		// $('#main').empty();
+		//(2)remove返回删除的元素，之后可以重新添加
+		// var $tmp=$('#main').remove();
+		// $tmp.appendTo($('body'));
+		//(3)detach返回删除的元素以及事件，之后可以重新添加
+		var $tmp=$('#main').detach();
+		$tmp.appendTo($('body'));
 	</script>
 </body>
 </html>
