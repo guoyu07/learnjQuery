@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+	<div id="main">main</div>
+	<ul>
+		<li class="liStyle">1</li>
+		<li class="liStyle">2</li>
+		<li class="liStyle">3</li>
+		<li class="liStyle">4</li>
+		<li class="liStyle">5</li>
+	</ul>
+	<p>哈哈哈</p>
+	<script type="text/javascript">
+		$('#main,p').css('color','red');
+		alert('id为main的文本为'+$('#main').text());
+		alert('class为liStyle的数量为'+$('.liStyle').length);
+		alert('element为p的文本为'+$('p').text());
+		alert('共有'+$('*').length+'个元素');
+		for (var i =0; i < $('*').length; i++) {
+			alert($('*')[i].nodeName);
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+	<div id="main">main</div>
+	<ul>
+		<li class="liStyle">1</li>
+		<li class="liStyle">2</li>
+		<li class="liStyle">3</li>
+		<li class="liStyle">4</li>
+		<li class="liStyle">5</li>
+	</ul>
+	<p>哈哈哈</p>
+	<script type="text/javascript">
+		//ancestor在给定的父元素下匹配子元素
+		alert($('ul li').length);
+		alert($('ul').next().text());
+		alert($('#main').parent()[0].nodeName);
+		alert($('#main').siblings().length);
+	</script>
+</body>
+</html>

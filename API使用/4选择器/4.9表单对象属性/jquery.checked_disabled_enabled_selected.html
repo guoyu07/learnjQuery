@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<form action="">
+		<input name="usersex" type="radio" value="0">男
+		<input name="usersex" type="radio" value="1" checked="checked">女
+		<input name="userfavourite" type="checkbox" value="0">羽毛球
+		<input name="userfavourite" type="checkbox" value="1" checked="true">乒乓球
+		<input name="userfavourite" type="checkbox" value="2" checked="true">高尔夫球
+		<select name="" id="">
+			<option value="1">早</option>
+			<option value="2" selected="selected">上</option>
+			<option value="3">好</option>
+		</select>
+		<button type="submit">提交</button>
+		<button disabled="disabled" type="reset">重置</button>
+	</form>
+	
+	<script type="text/javascript">
+		 alert('被选中的控件的数量是：'+$(':checked').length);
+		 console.log($(':checked'));
+		 alert('被禁用的控件的数量是：'+$(':disabled').length);
+		 console.log($(':disabled'));
+		 alert('被启用的控件的数量是：'+$(':enabled').length);
+		 console.log($(':enabled'));
+		 alert('下拉菜单中被选中的文本是：'+$(':selected').text());
+		 console.log($(':selected'));
+	</script>
+</body>
+</html>

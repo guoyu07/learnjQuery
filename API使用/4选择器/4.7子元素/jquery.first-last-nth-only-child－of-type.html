@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		＃animate{
+			width: 20px;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	
+	<ul>
+		<li class="liStyle">1</li>
+		<span>q</span>
+		<span>w</span>
+		<span>e</span>
+		<li class="liStyle">2</li>
+		<li class="liStyle">3</li>
+		<li class="liStyle">4</li>
+		<li class="liStyle">5</li>
+		<li>尚不知道target选择器要如何使用</li>
+		<span>r</span>
+		<span>t</span>
+		<span>y</span>
+	</ul>
+	<ul>
+		<span>zqq</span>
+		<span>yfx</span>
+		<li class="liStyle">3</li>
+		<li class="liStyle">4</li>
+		<li class="liStyle">以type结尾的子元素选择器是逻辑意义上的序号,即选择的是第几个匹配元素，而不是第几个节点上匹配的元素</li>
+		<li>类似first-child与first的基本选择器与子元素选择器的区别是后者可以匹配多个父元素下面的第一个子元素</li>
+	</ul>
+	<ul>
+		<li>哈哈哈</li>
+	</ul>
+	<ul>
+		<span>123</span>
+		<li>呵呵哒</li>
+	</ul>
+	
+	<script type="text/javascript">
+		alert('所有ul父元素下第一个子节点(这个子节点为li)元素文本是:'+$('li:first-child').text());
+		alert('所有ul父元素下最后一个子节点(这个子节点为li)元素文本是:'+$('li:last-child').text());
+		alert('所有ul父元素下第一个li类型的元素的文本是:'+$('li:first-of-type').text());
+		alert('所有ul父元素下最后一个li类型的元素的文本是:'+$('li:last-of-type').text());	
+		alert('所有ul父元素下第3个节点(这个节点为li类型)的元素的文本是:'+$('li:nth-child(3)').text());	
+		alert('所有ul父元素下倒数第3个节点(这个节点为li类型)的元素的文本是:'+$('li:nth-last-child(3)').text());	
+		alert('所有ul父元素下第3个li类型的元素的文本是:'+$('li:nth-of-type(3)').text());	
+		alert('所有ul父元素下倒数第3个li类型的元素的文本是:'+$('li:nth-last-of-type(3)').text());	
+		alert('在所有ul父元素中查找只含有一个元素（这个元素是li元素）的父元素，这个li元素的文本是:'+$('li:only-child').text());	
+		alert('在所有ul父元素中查找只含有一个li元素的父元素，这个li元素的文本是:'+$('li:only-of-type').text());	
+	</script>
+</body>
+</html>

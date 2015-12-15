@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		＃animate{
+			width: 20px;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h1>标题一</h1>
+	<h2>标题二</h2>
+	<h3>标题三</h3>
+	<div id="main">main</div>
+	<ul>
+		<li class="liStyle">1</li>
+		<li class="liStyle">2</li>
+		<li class="liStyle">3</li>
+		<li class="liStyle">4</li>
+		<li class="liStyle">5</li>
+		<li>尚不知道target选择器要如何使用</li>
+	</ul>
+	<p>哈哈哈</p>
+	<span></span>
+	<a href="https://www.baidu.com/" target="_blank">链接</a>
+	<div id="animate">动画</div>
+	<input id="username" type="text" value="用户名">
+	<input id="password" type="password" value="密码">
+	<script type="text/javascript">
+		//匹配包含给定文本的元素
+		alert('li元素中含有文本3的父类元素是:'+$('li:contains(3)').parent()[0].nodeName);
+		//匹配所有的空元素
+		alert('文章中的空元素有'+$(':empty').length+'个');
+		console.log($(':empty'));
+		alert('有'+$(':has(li)').length+'个元素下面含有li元素');
+		console.log($(':has(li)'));
+	</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	
+	<span id="love" class="zqq yfx" style="display:none"></span>
+
+	<script type="text/javascript">
+		alert('包含了class属性的元素是'+$('[class]')[0].nodeName);
+		alert('class属性值为"zqq yfx"的元素是'+$('[class="zqq yfx"]')[0].nodeName);
+		alert('class属性值以zqq开头的元素是'+$('[class^="zqq"]')[0].nodeName);
+		alert('class属性值以yfx结尾的元素是'+$('[class$="yfx"]')[0].nodeName);
+		alert('class属性值含yfx的元素是'+$('[class*="yfx"]')[0].nodeName);
+		alert('有id属性和class属性，并且class属性值含yfx的元素是'+$('[id][class*="yfx"]')[0].nodeName);
+	</script>
+</body>
+</html>

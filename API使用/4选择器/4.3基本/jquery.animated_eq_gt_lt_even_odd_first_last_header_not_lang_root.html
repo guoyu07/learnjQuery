@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		＃animate{
+			width: 20px;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h1>标题一</h1>
+	<h2>标题二</h2>
+	<h3>标题三</h3>
+	<div id="main">main</div>
+	<ul>
+		<li class="liStyle">1</li>
+		<li class="liStyle">2</li>
+		<li class="liStyle">3</li>
+		<li class="liStyle">4</li>
+		<li class="liStyle">5</li>
+		<li>尚不知道target选择器要如何使用</li>
+	</ul>
+	<p>哈哈哈</p>
+	<a href="https://www.baidu.com/" target="_blank">链接</a>
+	<div id="animate">动画</div>
+	<input id="username" type="text" value="用户名">
+	<input id="password" type="password" value="密码">
+	<script type="text/javascript">
+		$('#animate').css('position','absolute').animate({
+			left:'+=200'
+		},5000,function(){
+			alert('动画完成');
+		});
+		$('#username').focus(function(){
+			alert('正在获取焦点的元素的value值为'+$(':focus').val());
+			$('#password').focus();
+		});
+		alert('正在运行的动画元素div的内容为：'+$(':animated').text());
+		//元素下标
+		alert('下标为2的li元素的内容为：'+$('li:eq(2)').text());
+		alert('下标大于2的li元素的个数为'+$('li:gt(2)').length);
+		alert('下标小于2的li元素的个数为'+$('li:lt(2)').length);
+		alert('第一个li元素的文本内容为'+$('li:first').text());
+		alert('最后一个li元素的文本内容为'+$('li:last').text());
+		//匹配所有为偶数下标的元素
+		for(var i=0;i<$('li:even').length;i++){
+			alert('li偶数下标'+i*2+'的文本内容为：'+$($('li:even')[i]).text());
+		}
+		alert('li奇数下标的元素个数为：'+$('li:odd').length);
+		alert('匹配到的标题元素有'+$(':header').length+'个');
+		alert('li元素中没有liStyle类的有'+$("li:not(.liStyle)").length+'个');
+		alert('设置了语言的元素是'+$(':lang(en)')[0].nodeName);
+		alert('根元素是'+$(":root")[0].nodeName);
+	</script>
+</body>
+</html>
