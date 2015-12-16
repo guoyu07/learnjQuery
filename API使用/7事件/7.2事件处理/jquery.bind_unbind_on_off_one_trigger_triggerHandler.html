@@ -24,11 +24,23 @@
 		<li>尚不知道target选择器要如何使用</li>
 	</ul>
 	<script type="text/javascript">
-		$('li:first').hover(function(){
-			alert('移入');
-		},function(){
-			alert('移出');
+		$('body').bind('click',function(){
+			alert('bind点击事件');
 		});
+		$('body').unbind('click');
+		$('body').on('click',function(){
+			alert('on点击事件');
+		});
+		$('body').off('click');
+		$('body').one('click',function(){
+			alert('one点击事件');
+		});
+		//$('body').trigger('click');
+		//triggerHandler方法相比trigger
+		//(1)不会触发浏览器默认行为
+		//(2)只会触发匹配的元素集合中的第一个元素的事件处理程序
+		//(3)返回的是jQuery事件函数的返回值，不可链式操作
+		$('body').triggerHandler('click');
 	</script>
 </body>
 </html>

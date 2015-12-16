@@ -24,11 +24,12 @@
 		<li>尚不知道target选择器要如何使用</li>
 	</ul>
 	<script type="text/javascript">
-		$('li:first').hover(function(){
-			alert('移入');
-		},function(){
-			alert('移出');
+		//delegate方法可以绑定事件到未来通过脚本添加的元素
+		$('ul').delegate('li','click',function(){
+			alert($(this).text());
 		});
+		$('ul').append('<li>脚本添加的元素</li>');
+		$('ul').undelegate('li','click');
 	</script>
 </body>
 </html>

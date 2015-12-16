@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		body{
+			border: 1px solid orange;
+		}
+		＃animate{
+			width: 20px;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<form action="">
+		<input id="username" name="username" type="text" placeholder="用户名">
+		<input id="password" name="password" type="text" placeholder="密码">
+		<input id="tmp" name="tmp" type="text" placeholder="其他">
+	</form>
+	<ul>
+		<li class="liStyle">1</li>
+		<li class="liStyle"><span>123</span></li>
+		<li class="liStyle">3</li>
+		<li class="liStyle">4</li>
+		<li class="liStyle">5</li>
+		<li>尚不知道target选择器要如何使用</li>
+	</ul>
+	<script type="text/javascript">
+		//焦点移入事件,focusin和focus差不多
+		$('#password').focus(function(){
+			alert('焦点移入');
+			//这种方法不会再触发blur事件
+			$('#username').focus();
+		})
+		//blur事件与change事件同时发生时，只会触发change事件
+		//focus与focusout差不多
+		$('#username').blur(function(){
+			alert('焦点移走');
+		});
+		$('#username').change(function(){
+			alert('数值发生改变');
+		});
+		//元素同时绑定click事件与dblclick事件时，只会触发click事件
+		$('#username').click(function(){
+			alert('被单击');
+		});
+		$('#username').dblclick(function(){
+			alert('被双击');
+		});
+		//当页面的js或图像的src无效时都会触发error事件
+		$(window).error(function(data){
+			alert('页面发生了错误，'+'错误文件为：'+data.originalEvent.filename+',错误行号为：'+data.originalEvent.lineno+',错误信息为'+data.originalEvent.message);
+			return true;
+		});
+		//模拟错误$.zqq();
+		$('#tmp').keydown(function(){
+			console.log('手指按下');
+		});
+		$('#tmp').keypress(function(){
+			console.log('只有在英文输入法的时候才会发生');
+		});
+		$('#tmp').keyup(function(){
+			console.log('手指抬起');
+		})
+	</script>
+</body>
+</html>

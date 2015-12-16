@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		body{
+			border: 1px solid orange;
+		}
+		#main{
+			width: 100px;
+			height: 100px;
+			background-color: orange;
+			margin-bottom:20px;
+		}
+		#over,#enter{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+		#enter{
+			margin-top:20px;
+		}
+		.sub{
+			width: 100px;
+			height: 80px;
+			border: 5px solid red;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		
+	</div>
+	<div id="over">
+		over父元素:<span></span>次，穿越父元素或父元素下面的子元素都会触发
+		<div class="sub">子元素</div>
+	</div>
+	<div id="enter">
+		enter父元素<span></span>次，只有穿越父元素才会触发
+		<div class="sub">子元素</div>
+	</div>
+	
+
+	<form action="#">
+		<input id="username" name="username" type="text" placeholder="用户名">
+		<input id="password" name="password" type="text" placeholder="密码">
+		<input id="tmp" name="tmp" type="text" placeholder="其他">
+		<button type="submit">提交</button>
+	</form>
+	<ul>
+		<li class="liStyle">1</li>
+		<li class="liStyle"><span>123</span></li>
+		<li class="liStyle">3</li>
+		<li class="liStyle">4</li>
+		<li class="liStyle">5</li>
+		<li>尚不知道target选择器要如何使用</li>
+	</ul>
+	<a href="https://www.baidu.com/">去百度</a>
+	<script type="text/javascript">
+		$(window).resize(function(){
+			alert('窗口尺寸发生改变');
+		});
+		$(document).scroll(function(){
+			alert('滚动条滚动');
+		});
+		$(document).unload(function(){
+			alert('窗口关闭');
+		});
+		$('form').submit(function(){
+			alert('表单提交');
+		});
+		$('#username').select(function(){
+			alert('用户名文本框内容被选中');
+		});
+		$(window).unload(function(){
+			//unload方法现在好像都不生效了
+			return '确定要离开吗';
+		});
+	</script>
+</body>
+</html>
