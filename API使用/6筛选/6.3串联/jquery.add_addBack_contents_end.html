@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		＃animate{
+			width: 20px;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h1>标题一</h1>
+	<h1>标题二</h1>
+	<h1>标题三</h1>
+	<div id="main">main</div>
+	<ul>
+		<li class="liStyle">1</li>
+		<li class="liStyle"><span>123</span></li>
+		<li class="liStyle">3</li>
+		<li class="liStyle">4</li>
+		<li class="liStyle">5</li>
+		<li>尚不知道target选择器要如何使用</li>
+	</ul>
+	<p>哈哈哈</p>
+	<span id="liValue"></span>
+	<script type="text/javascript">
+		//add方法添加额外的元素到匹配的元素中
+		$('li').add('p').css('color','orange');
+		//addBack和add的功能差不多，都是添加额外的元素到匹配的元素中，只不过写法不同
+		$('li:eq(3)').nextAll().addBack().css('color','blue');
+		//contents类似于children()，不同的是，它返回的不是jQuery对象集合，而是元素节点或注释节点的集合
+		alert($('ul').contents().filter('li').length);
+		//end返回上一链条选择器
+		alert($('ul').find('li').end()[0].nodeName);
+	</script>
+</body>
+</html>

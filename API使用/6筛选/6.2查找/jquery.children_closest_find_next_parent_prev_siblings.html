@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		＃animate{
+			width: 20px;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h1>标题一</h1>
+	<h1>标题二</h1>
+	<h1>标题三</h1>
+	<div id="main">main</div>
+	<ul>
+		<li class="liStyle">1</li>
+		<li class="liStyle"><span>123</span></li>
+		<li class="liStyle">3</li>
+		<li class="liStyle">4</li>
+		<li class="liStyle">5</li>
+		<li>尚不知道target选择器要如何使用</li>
+	</ul>
+	<p>哈哈哈</p>
+	<span id="liValue"></span>
+	<script type="text/javascript">
+		alert($('ul').children().text());
+		//从匹配的元素开始，查找父元素中最近的元素	
+		alert('li元素最近的父元素ul是：'+$('li:first').closest('ul')[0].nodeName);	
+		alert('第一个li元素的文本是：'+$('ul').find('li:first').text());	
+		alert('第一个li元素之后的一个元素的文本是：'+$('li:first').next().text());						
+		alert('第一个li元素之后的所有元素的文本是：'+$('li:first').nextAll().text());
+		alert('第一个li元素之后,最后一个li元素之前的所有元素的文本是：'+$('li:first').nextUntil($('li:last')).text());
+		alert('离第一个li元素最近，具有relative或absolute属性的定位元素是'+$('li:first').offsetParent()[0].nodeName);		
+		alert('第一个li元素的第一个父元素是'+$('li:first').parent()[0].nodeName);		
+		alert('第一个li元素的所有父元素数量是:'+$('li:first').parents().length);		
+		alert('从第一个li元素开始，到body元素结束，所有父元素数量是:'+$('li:first').parentsUntil('body').length);		
+		alert('第3个li元素的前一个元素的文本内容是:'+$('li:eq(2)').prev().text());		
+		alert('第3个li元素之前的所有元素的文本内容是:'+$('li:eq(2)').prevAll().text());		
+		alert('第3个li元素之前，第1个li元素之后的一个元素的文本内容是:'+$('li:eq(2)').prevUntil('li:first').text());
+		//siblings返回的是DOM元素集合，而不是jQuery对象集合
+		alert('第1个li元素的同级元素数量是:'+$('li:first').siblings().length);
+	</script>
+</body>
+</html>
