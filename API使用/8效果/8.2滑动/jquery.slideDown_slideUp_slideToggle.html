@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		#main{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		
+	</div>
+	<script type="text/javascript">
+		/*第一种方法
+		(function animate(){
+			$('#main').slideDown(1000,function(){
+				$('#main').slideUp(1000,animate);
+			});
+		}());*/
+		
+		//第二种方法,根据匹配元素目前的状态来决定是折叠还是展开
+		//args 速度，效果，回调函数
+		(function animate(){
+			$('#main').slideToggle(1000,animate);
+		}());
+	</script>
+</body>
+</html>

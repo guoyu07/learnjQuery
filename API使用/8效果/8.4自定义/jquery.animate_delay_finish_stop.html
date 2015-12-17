@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		#main{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		
+	</div>
+	<script type="text/javascript">
+		//(1)隐藏
+		/*
+		(function animate(){
+			$('#main').animate({
+				width:0,
+				height:0,
+				opacity:0
+			},1000,function(){
+				$(this).animate({
+					width:200,
+					height:200,
+					opacity:1
+				},1000,animate);
+			});
+		}());*/
+
+		//(2)滑动
+		/*
+		(function animate(){
+			$('#main').animate({
+				height:0
+			},1000,function(){
+				$(this).animate({
+					height:200
+				},1000,animate);
+			});
+		}());*/
+		
+		//(3)淡入淡出
+		/*
+		(function animate(){
+			$('#main').animate({
+				opacity:0
+			},1000,function(){
+				$(this).animate({
+					opacity:1
+				},1000,animate);
+			}).hover(function(){
+				//动画暂停
+				$(this).stop(true);
+			},animate);
+		}());*/
+		
+		//(4)动画延迟
+		$('#main').hide(1000).delay(3000).show(1000).click(function(){
+			//finish与stop类似
+			//不过stop在暂停时只会让当前正在进行的动画的CSS到达目标值
+			//而finish会让所有排队的动画的CSS到达目标值
+			$(this).finish();
+		});
+	</script>
+</body>
+</html>

@@ -5,31 +5,23 @@
 	<title>Document</title>
 	<script src="../../../src/jquery-2.0.3.js"></script>
 	<style type="text/css">
-		#div1,#div2{
+		#main{
 			width: 200px;
 			height: 200px;
 			background-color: red;
 		}
-		#div2{
-			margin-top: 20px;
-		}
 	</style>
 </head>
 <body>
-	<div id="div1">
-		
-	</div>
-	<div id="div2">
+	<div id="main">
 		
 	</div>
 	<script type="text/javascript">
-		//禁用所有动画
-		// $.fx.off=true;
-		//设置动画帧速
-		$.fx.interval=10;
 		(function animate(){
-			$('#div1,#div2').slideToggle(1000,animate);
-		}())
+			$('#main').hide(1000,function(){
+				$('#main').show(1000,animate);
+			});
+		}());
 	</script>
 </body>
 </html>

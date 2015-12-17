@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		#main{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		
+	</div>
+	<script type="text/javascript">
+		/*第一种方法
+		(function animate(){
+			$('#main').fadeOut(3000,function(){
+				$(this).fadeIn(3000,animate);		
+			});
+		}())
+		*/
+
+		/*第二种方法
+		(function animate(){
+			$('#main').fadeToggle(3000,animate);
+		}());*/
+		
+		//fadeTo可以调节到指定的透明度
+		(function animate(){
+			$('#main').fadeTo(3000,'0.3',function(){
+				$(this).fadeTo(3000,'0.6',animate);
+			});
+		}());
+	</script>
+</body>
+</html>
