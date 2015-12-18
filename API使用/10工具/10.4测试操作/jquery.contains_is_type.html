@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<script type="text/javascript">
+		//检测一个DOM节点是否包含另一个DOM节点，参数不能为DOM集合
+		//false
+		console.log($.contains(document.getElementsByTagName('ul'),document.getElementsByTagName('li')));
+		//true
+		console.log($.contains(document.documentElement,document.body));
+		
+		//判断是否为数组
+		console.log($.isArray([1,2,3,4]));
+		//找个特殊一点的类数组来测试
+		console.log((function(a,b,c){
+			return $.isArray(arguments);
+		}(1,2,3)));
+
+		//isFunction检测是否为函数
+		//isEmptyObject坚持是否为空对象
+		//isPlainObject检测是否为纯粹的对象
+		//isNumeric检测是否为纯粹的数字
+
+		//检测是否为window对象
+		alert($.isWindow(window));		
+
+		//检测数值类型，可以明确的区分不同类型的对象
+		alert($.type([1,3,4]));
+	</script>
+</body>
+</html>

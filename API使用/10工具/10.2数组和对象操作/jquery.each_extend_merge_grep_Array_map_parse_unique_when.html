@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<script type="text/javascript">
+		//数组遍历
+		$.each({name:'zqq',age:22},function(i,n) {
+			console.log('索引为'+i+',值为'+n);
+		});
+		//对象合并
+		var obj1={
+			name:'zqq',
+			age:22,
+			info:{
+				home:'Henan',
+				sex:'男'
+			}
+		}
+		var obj2={
+			name:'yfx',
+			info:{
+				home:'Henan',
+				sex:'女',
+				birth:function(){
+					return 1008;
+				}
+			}
+		}
+		console.log($.extend(obj1,obj2));
+		//数组合并,并按从小到大的顺序排列
+		console.log($.merge([3],[1,2,4]).sort());
+		//数组元素过滤,参数n为值，i为索引，回调函数必须返回布尔值
+		//以下代码将过滤出大于2的数值组成的数组
+		var filterArr=$.grep([1,2,3,4],function(n,i){
+			return n>2;
+		});
+		console.log(filterArr);
+		//判断数值是否在数组中,如果在返回索引值
+		console.log($.inArray(0,[1,2,3]));
+		//将类数组对象转化为数组对象
+		(function testMakeArr(a,b,c){
+			console.log($.makeArray(arguments) instanceof Array);//true
+		}(1,2,3));
+		//数组映射,将数组中的元素都加1
+		console.log($.map([1,2,3,4],function(value){
+			return value+1;
+		}));
+		//数组映射,将数组中的元素都转换为包含自身和将自身＋1的数组
+		console.log($.map([1,2,3,4],function(value){
+			return [value,value+1];
+		}));
+		//JSON解析,注意JSON字符串的书写必须使用双引号
+		console.log($.parseJSON('{"name":"zqq","age":22}'));
+		//XML解析
+		console.log($($.parseXML('<rss version="2.0"><channel><title>RSS Title</title></channel></rss>')).find('title').text());
+		//unique去除数组中的重复元素
+		console.log($.unique([1,2,3,3,4,4,5,6,7,8]).sort());
+		//将jQuery对象集合转换为DOM元素集合
+		console.log($('li').toArray());	
+		//$.when执行一个或多个延迟事件的回调函数
+		//链式写法中的done和fail对应于success与error
+		$.ajax('jquery.test.html').done(function(data){
+			alert('请求成功');	
+		}).fail(function(){
+			alert('请求失败');
+		});	
+		//done和error可以统一为then
+		$.ajax('jquery.test.html').then(function(){
+			alert('请求成功');
+		},function(){
+			alert('请求失败');
+		});
+		//如果多个异步事件共用一个回调函数，则可以使用when函数
+		$.when($.ajax('jquery.test.html'),$.ajax('jquery.test2.html')).then(function(){
+			alert('请求成功');
+		},function(){
+			alert('请求失败');
+		});
+	</script>
+</body>
+</html>

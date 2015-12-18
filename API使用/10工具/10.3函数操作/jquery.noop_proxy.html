@@ -9,19 +9,20 @@
 	</style>
 </head>
 <body>
-	<ul>
-		<li>1</li>
-		<li>2</li>
-		<li>3</li>
-		<li>4</li>
-		<li>5</li>
-	</ul>
 	<script type="text/javascript">
-		//$.param讲表单元素和数组序列化
-		console.log($.param({
-			name:'zqq',
+		//空函数function(){}
+		console.log($.noop);
+		//改变函数的作用域
+		var func=function(){
+			return this.age;
+		},
+		age=999,
+		zqq={
 			age:22
-		}));
+		};	
+		console.log(($.proxy(func)()));
+		console.log(($.proxy(func,window)()));
+		console.log(($.proxy(func,zqq)()));
 	</script>
 </body>
 </html>

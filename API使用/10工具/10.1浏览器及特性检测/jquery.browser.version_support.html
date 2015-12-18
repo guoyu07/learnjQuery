@@ -9,19 +9,11 @@
 	</style>
 </head>
 <body>
-	<ul>
-		<li>1</li>
-		<li>2</li>
-		<li>3</li>
-		<li>4</li>
-		<li>5</li>
-	</ul>
 	<script type="text/javascript">
-		//输出jQuery的版本号
-		alert($().jquery);
-		alert($.fn.jquery);
-		//直接向控制台输出异常
-		$.error('抛出异常');
+		//已被弃用
+		alert('浏览器的版本是'+$.browser);
+		//浏览器支持情况
+		console.log($.support);
 	</script>
 </body>
 </html>
