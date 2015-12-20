@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		#main{
+			width: 200px;
+			height: 200px;
+			background-color: orange;
+		}
+		body{
+			border: 3px solid orange;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		
+		$('#main').click(function(){
+			return 100;	
+		});
+
+		$('#main').click(function(event){
+			//阻止浏览器默认行为
+			event.preventDefault();
+			//检测 event.preventDefault() 是否被调用过。
+			console.log(event.isDefaultPrevented());//true
+
+
+			//事件类型
+			console.log(event.type);
+			//标准化event.keyCode和event.charCode,获取触发事件的按键或鼠标代号
+			console.log(event.which);
+			//获取鼠标点击的位置
+			console.log('位置Left：'+event.pageX+',Top:'+event.pageY);
+
+
+			//在事件冒泡阶段中的DOM元素
+			console.log(event.currentTarget);//#main
+			//最初触发事件绑定的DOM元素
+			console.log(event.target);
+			//事件发生时候的时间戳
+			console.log(event.timeStamp);
+			console.log(event.result);
+
+			//阻止事件冒泡行为
+			event.stopPropagation();
+			//检测event.stopPropagation()是否被调用过
+			console.log(event.isPropagationStopped());//true
+
+			//阻止事件冒泡行为的同时，停止执行绑定在该元素上的其他DOM事件
+			event.stopImmediatePropagation();
+			// 检测event.stopImmediatePropagation() 是否被调用过
+			console.log(event.isImmediatePropagationStopped());//true
+		})
+
+
+		//DOM事件触发时涉及到的其他DOM元素
+		$('#main').mouseover(function(event){
+			console.log(event.relatedTarget.nodeName);
+		});
+		
+
+		//自定义事件的命命空间
+		$('#main').on('zqq.yfx',function(event){
+			alert('曾庆权爱余凤霞');
+			console.log(event.namespace);
+		});
+		$('body').click(function() {
+			$('#main').trigger('zqq.yfx');
+		});
+
+
+		//执行事件时，传递额外的数据给bind方法
+		/*
+		$('li').each(function(index){
+			$(this).bind('click',{arg:index},function(event){
+				alert('The index of this element is '+event.data.arg+';');
+			});
+		})*/
+
+
+		//获取当前事件的委托元素,注意on和delegate在参数上面的区别
+		$('ul').on('click','li',function(event){
+			console.log(event.delegateTarget);
+		});
+	</script>
+</body>
+</html>
