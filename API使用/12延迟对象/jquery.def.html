@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用Def，随心随意的回调</title>
+	<script src="../../src/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		#main{
+			width: 200px;
+			height: 200px;
+			background-color: orange;
+		}
+		body{
+			border: 3px solid orange;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		//＝＝＝＝＝＝＝＝＝＝＝＝＝＝版本1＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+		//如果我们想在wait完成之后，添加一个回调函数
+		//理想当然的就是想到用when
+		/*
+		function wait(){
+			setTimeout(function(){
+				console.log('Hello');
+			}, 5000);
+		}*/
+		//done和fail可以统一使用when
+		/*
+		$.when(wait()).done(function(){
+			console.log('执行成功');
+		}).fail(function(){
+			console.log('执行失败');
+		}).always(function(){
+			console.log('成功或失败都会执行，唯独等待中不执行');
+		})*/
+		//然而事实的情况是console.log('执行成功')会立即输出
+		//因为when方法接收的必须是def对象
+
+
+
+		//＝＝＝＝＝＝＝＝＝＝＝＝＝＝版本2＝＝＝＝＝＝＝＝＝＝＝＝
+		//新建dtd对象
+		/*
+		var dtd=$.Deferred();
+		function wait(){
+			setTimeout(function(){
+				console.log('Hello');
+				//改变dtd对象状态
+				//jQuery中的ajax方法会根据结果自动改变状态
+				//而我们自定义的延迟对象，必须手动设置状态
+				//def对象有三种状态，未完成，成功，失败
+				//resolve()方法会触发done方法
+				//reject()方法会触发fail方法
+				// dtd.resolve();
+				//dtd.reject();
+				dtd.notify();
+			}, 5000);
+			//返回def对象
+			return dtd;
+		}
+
+		//Start然而这种情况下也是有问题的，因为dtd的状态在外部可以随意改变
+		//dtd.resolve();//只要添加这一行代码会立即输出执行成功
+		//===============================End
+		$.when(wait()).done(function(){
+			console.log('执行成功');
+		}).fail(function(){
+			console.log('执行失败');
+		}).progress(function(){
+			console.log('等待中');
+		}).always(function(){
+			console.log('成功或失败都会执行，唯独等待中不执行');
+		})
+		*/
+
+
+		//＝＝＝＝＝＝＝＝＝＝＝＝＝＝版本3＝＝＝＝＝＝＝＝＝＝＝＝
+		//将dtd对象的初始化放在需要执行回调函数的事件里面去并完善细节
+		function wait(){
+			var dtd=$.Deferred();
+			setTimeout(function(){
+				console.log('Hello');
+				//改变dtd对象状态
+				//jQuery中的ajax方法会根据结果自动改变状态
+				//而我们自定义的延迟对象，必须手动设置状态
+				//def对象有三种状态，未完成，成功，失败
+				//resolve()方法会触发done方法
+				//reject()方法会触发fail方法
+				// dtd.resolve();
+				dtd.reject();
+				// dtd.notify();
+				console.log('dtd对象目前的状态是'+dtd.state());
+			}, 5000);
+			//返回def对象
+			return dtd;
+		}
+		$.when(wait()).done(function(){
+			console.log('执行成功');
+		}).fail(function(){
+			console.log('执行失败');
+		}).progress(function(){
+			console.log('等待中');
+		}).always(function(){
+			console.log('成功或失败都会执行，唯独等待中不执行');
+		})
+
+
+
+		/**
+		*备注：promise()方法返回的是dtd对象的精简版
+		*该对象不具有改变延迟对象的reject和resolve方法;
+		*
+		*rejectWith、resolveWith、notifyWith方法原理上应用了apply
+		*其参数都是传给了对应的处理程序fail、done与progress
+		*可以改变done、fail、progress里面的this指向
+		*
+		*
+		*
+		*
+		*
+		*/
+
+
+	</script>
+</body>
+</html>
